@@ -1,0 +1,23 @@
+void Dictionary()
+{
+	int check=1,n,i,j;
+	float count=0; 
+	char word[20];
+	printf("Enter Word\n");
+	scanf(" %s",word);
+	FILE *words;
+	words=fopen("Words.txt","r+");
+	fscanf(words," %s",search);
+	while(strcmp(word,search)!=0)
+	{
+		fscanf(words," %s",search);
+		check++;
+		if(feof(words)){
+			check=0;
+			break;
+		}	
+	}
+	fclose(words);
+	Meaning(check);
+	Suggestion(check,word);
+}

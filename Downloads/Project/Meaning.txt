@@ -1,0 +1,15 @@
+void Meaning(int check)
+{
+	int i;
+	char search[300];
+	FILE *meanings;
+	meanings=fopen("Meanings.txt","r+");
+	if(check!=0)
+	{
+		for(i=0;i!=check;i++)
+		{
+			fscanf(meanings," %[^\n]s",search);
+		}
+		printf("%s\n",search);
+	}
+}

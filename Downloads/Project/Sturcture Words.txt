@@ -1,0 +1,4 @@
+struct Words{
+	char word[20];
+	char meaning[300];
+};

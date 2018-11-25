@@ -1,0 +1,66 @@
+void Suggestions(int check,char word[20])
+{
+	struct Words WM[100];
+	int i,j,count=0;
+	char search[20];
+	FILE *words,*meanings;
+	words=fopen("Words.txt","r+");
+	meanings=fopen("Meanings.txt","r+");
+	if(check==0)
+	{
+		printf("Word Not Found\n");
+		printf("Instead You Can Search For\n");
+		while(!(feof(words)))
+		{
+			count=0;
+			fscanf(words," %[^\n]s",search);
+			if(strlen(word)==strlen(search))
+			{
+				for(i=0;i<strlen(word);i++)
+				{
+					if(word[i]==search[i])
+					{
+						count++;
+					}
+				}
+				check=(count*100)/strlen(search);
+				if(check>=60)
+				{
+					printf("%s\n",search);
+				}
+			}
+			else if(strlen(word)<strlen(search))
+			{
+				for(i=0,j=0;i<strlen(search);i++)
+				{
+					if(search[i]==word[j])
+					{
+						count++;
+						j++;
+					}
+				}
+				check=(count*100)/strlen(search);
+				if(check>=60)
+				{
+					printf("%s\n",search);
+				}
+			}
+			else if(strlen(word)>strlen(search))
+			{
+				for(i=0,j=0;i<strlen(search);i++)
+				{
+					if(word[i]==search[j])
+					{
+						count++;
+						j++;
+					}
+				}
+				check=(count*100)/strlen(word);
+				if(check>=60)
+				{
+					printf("%s\n",search);
+				}
+			}
+		}
+	}
+}
